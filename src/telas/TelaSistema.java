@@ -45,7 +45,11 @@ public class TelaSistema extends JFrame implements ActionListener {
         conteudo.setLayout(new GridLayout(1, 2));
 
         sidebar.setPreferredSize(new Dimension(250, 500));
-        conteudo.add(new JButton("Conteudo"));        
+
+        JPanel conteudoWrapper = new JPanel();
+        conteudoWrapper.setBackground(Color.decode("#BEBEBE"));
+
+        conteudo.add(conteudoWrapper);        
         
         montaSidebar();
 
