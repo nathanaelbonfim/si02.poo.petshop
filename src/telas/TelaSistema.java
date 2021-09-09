@@ -1,20 +1,17 @@
 package telas;
 
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentEvent;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.GridBagLayout;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ComponentListener;
 import java.awt.Dimension;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JMenuBar;
@@ -22,10 +19,9 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JLabel;
 
-public class TelaSistema extends JFrame implements ActionListener, ComponentListener {
+public class TelaSistema extends JFrame implements ActionListener {
     public static JDesktopPane jdp = new JDesktopPane();
     private JMenuBar jmb;
-    private JFrame botoesSidebar = new JFrame();
     private JPanel sidebar = new JPanel();
     private JPanel conteudo = new JPanel();
 
@@ -45,7 +41,7 @@ public class TelaSistema extends JFrame implements ActionListener, ComponentList
 
         getContentPane().setLayout(new BorderLayout());
         
-        sidebar.setLayout(new GridLayout(0, 1));
+        sidebar.setLayout(new GridLayout(16, 0));
         conteudo.setLayout(new GridLayout(1, 2));
 
         sidebar.setPreferredSize(new Dimension(250, 500));
@@ -122,21 +118,4 @@ public class TelaSistema extends JFrame implements ActionListener, ComponentList
         sidebar.add(jbFornecedores);
         sidebar.add(jbProdutos); 
     }
-
-    @Override
-    public void componentResized(ComponentEvent e) {
-        // TODO Auto-generated method stub
-        sidebar.setSize(200, getSize().height);
-    }
-
-    @Override
-    public void componentMoved(ComponentEvent e) { }
-
-    @Override
-    public void componentShown(ComponentEvent e) { }
-
-    @Override
-    public void componentHidden(ComponentEvent e) { }
-
-    
 }
