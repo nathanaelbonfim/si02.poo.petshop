@@ -8,6 +8,7 @@ import java.awt.GridBagLayout;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ComponentListener;
+import java.awt.Dimension;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
@@ -24,9 +25,7 @@ import javax.swing.JLabel;
 public class TelaSistema extends JFrame implements ActionListener, ComponentListener {
     public static JDesktopPane jdp = new JDesktopPane();
     private JMenuBar jmb;
-
     private JFrame botoesSidebar = new JFrame();
-
     private JPanel sidebar = new JPanel();
     private JPanel conteudo = new JPanel();
 
@@ -41,35 +40,21 @@ public class TelaSistema extends JFrame implements ActionListener, ComponentList
 
     public TelaSistema(String titulo) {
         super(titulo);
-        setExtendedState(JFrame.MAXIMIZED_VERT);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(800, 600);
-        setResizable(false);
-        montaMenu();
 
         getContentPane().setLayout(new BorderLayout());
         
-        // Temporário
-        sidebar.setLayout(new GridLayout(12, 1));
+        sidebar.setLayout(new GridLayout(0, 1));
+        conteudo.setLayout(new GridLayout(1, 2));
 
-        sidebar.setSize(200, getSize().height);
-
-        getContentPane().setBackground(Color.RED);
-        sidebar.setBackground(Color.decode("#B8CFE5"));
-        conteudo.setBackground(Color.green);
-
-        
+        sidebar.setPreferredSize(new Dimension(250, 500));
+        conteudo.add(new JButton("Conteudo"));        
         
         montaSidebar();
 
-        // sidebar.setLayout(new GridLayout(0, 1));
-        // sidebar.setBackground(Color.PINK);
-        // botoesSidebar.setLayout(new GridLayout(3, 1));
-
-
-        // getContentPane().add( ,sidebar);
-        getContentPane().add(sidebar);
-        getContentPane().add(conteudo);
+        getContentPane().add(sidebar, "West");
+        getContentPane().add(conteudo, BorderLayout.CENTER);
         
         setVisible(true);
     }
@@ -116,42 +101,26 @@ public class TelaSistema extends JFrame implements ActionListener, ComponentList
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == jmiEstados) {
             TelaCadastroEstado telaCadastroEstados = new TelaCadastroEstado();
-            // jdp.add(telaCadastroEstados);
         } else if (ae.getSource() == jmiCidades) {
             TelaCadastroCidade telaCadastroCidades = new TelaCadastroCidade();
-            // jdp.add(telaCadastroCidades);
         }else if (ae.getSource() == jmiClientes) {
             TelaCadastroCliente telaCadastroClientes = new TelaCadastroCliente();
-            // jdp.add(telaCadastroClientes);
         } else if (ae.getSource() == jmiFornecedores) {
             TelaCadastroFornecedor telaCadastroFornecedores = new TelaCadastroFornecedor();
-            // jdp.add(telaCadastroFornecedores);
         } else if (ae.getSource() == jmiProdutos) {
             TelaCadastroProduto telaCadastroProdutos = new TelaCadastroProduto();
-            // jdp.add(telaCadastroProdutos);
         }
     }
     
     public void montaSidebar(){
-        
-        componentes.setBackground(Color.MAGENTA);
-        // sidebar.setBackground(Color.BLUE);
-        // sidebar.setBounds(0, 0, 200, 150);
-        componentes.setBounds(201, 0, 200, 600);
-
         JLabel status = new JLabel();
-        status.setBounds(0, 0, 225, 225);
-        
         ImageIcon imagem = new ImageIcon("assets/img/logo.png");
-
         status.setIcon(imagem);
 
         sidebar.add(status);
         sidebar.add(jbVendas);
         sidebar.add(jbFornecedores);
         sidebar.add(jbProdutos); 
-        
-        // sidebar.add(botoesSidebar);
     }
 
     @Override
