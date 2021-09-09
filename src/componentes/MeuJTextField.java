@@ -2,13 +2,13 @@ package componentes;
 
 import javax.swing.JTextField;
 
-import java.awt.Color;
+import java.awt.Color; 
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 public class MeuJTextField extends JTextField implements MeuComponente, FocusListener {
     private String dica;
-    private Boolean obrigatorio;
+    private Boolean obrigatorio;  
 
     public MeuJTextField(int tamanho, String dica, Boolean obrigatorio) {
         super(tamanho);
