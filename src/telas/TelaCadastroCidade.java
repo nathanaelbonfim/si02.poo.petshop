@@ -10,7 +10,7 @@ public class TelaCadastroCidade extends TelaCadastro {
     private MeuJTextField jtfNome   = new MeuJTextField(20, "Nome", true);
     private MeuJTextField jtfCodigo = new MeuJTextField(10, "Código", true);
 
-    private String[] dados = {"PR", "SP"};
+    private String[] dados = {"PR", "SP", "BA"};
     private MeuJComboBox jcbEstado  = new MeuJComboBox(dados, "Estado", true);
 
     public TelaCadastroCidade() {
