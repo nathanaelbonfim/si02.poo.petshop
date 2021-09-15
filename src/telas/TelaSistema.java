@@ -1,23 +1,24 @@
 package telas;
 
-import java.awt.event.ActionListener;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
 import java.awt.Dimension;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.text.JTextComponent;
+
+import componentes.MeuTitulo;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JLabel;
-import javax.swing.JTextPane;
 
 
 public class TelaSistema extends JFrame {
@@ -43,6 +44,8 @@ public class TelaSistema extends JFrame {
      */
     private JPanel jpCorpo = new JPanel();
 
+    private MeuTitulo tituloTela = new MeuTitulo("Compras");
+
 
     // Botões
     private JButton jbVendas = new JButton("Vendas");
@@ -50,7 +53,15 @@ public class TelaSistema extends JFrame {
     private JButton jbProdutos = new JButton("Produtos");
     
     public TelaSistema(String titulo) {
+        this(titulo, "Tela");
+    }
+
+    public TelaSistema(String titulo, String nome) {
         super(titulo);
+
+        tituloTela.setText(nome);
+        tituloTela.setForeground(Color.white);
+
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(800, 600);
 
@@ -82,24 +93,39 @@ public class TelaSistema extends JFrame {
         conteudo.add(jpCorpo, "Center");
     }
 
-    
+    /**
+     * Monta o cabeçalho superior das telas do sistema
+     */
     private void montaCabecalho() {
         jpCabecalho.setBackground(Color.decode("#21252B"));
         jpCabecalho.setPreferredSize(new Dimension(800, 60));
         
-        JLabel texto = new JLabel("Teste");
-        texto.setForeground(Color.white);
-        jpCabecalho.add(texto);
+        jpCabecalho.setLayout(new GridBagLayout());
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.weightx = 10;
+        gbc.anchor = GridBagConstraints.WEST;
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.insets = new Insets(1, 20, 1, 20);
+
+        jpCabecalho.add(tituloTela, gbc);
     }
     
-
+    /**
+     * Monta o corpo do layout
+     */
     private void montaCorpo() {
         jpCorpo.setBackground(Color.decode("#4F79CA"));
         jpCorpo.setPreferredSize(new Dimension(800, 60));
         
-        JLabel texto = new JLabel("Teste");
+        JLabel texto = new JLabel("Oi");
         texto.setForeground(Color.white);
+
+        // GridBagConstraints gbc = new GridBagConstraints();
+        // gbc.anchor = GridBagConstraints.CENTER;
+
         jpCorpo.add(texto);
+        // jpCorpo.add(texto);
     }
 
     /**
