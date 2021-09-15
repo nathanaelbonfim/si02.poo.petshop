@@ -15,25 +15,40 @@ import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JMenuBar;
-import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JLabel;
+import javax.swing.JTextPane;
 
-public class TelaSistema extends JFrame implements ActionListener {
+
+public class TelaSistema extends JFrame {
     public static JDesktopPane jdp = new JDesktopPane();
     private JMenuBar jmb;
+
+    /**
+     * Barra lateral
+     */
     private JPanel sidebar = new JPanel();
+    /**
+     * Conteúdo da tela
+     */
     private JPanel conteudo = new JPanel();
 
+    /**
+     * Container para os botões da barra superior
+     */
+    private JPanel jpCabecalho = new JPanel();
 
-    private JMenu jmCadastros, jmMovimentos, jmRelatorios;
+    /**
+     * Container para o corpo da tela 
+     */
+    private JPanel jpCorpo = new JPanel();
+
+
+    // Botões
     private JButton jbVendas = new JButton("Vendas");
     private JButton jbFornecedores = new JButton("Fornecedores");
     private JButton jbProdutos = new JButton("Produtos");
-    private JMenuItem jmiEstados, jmiCidades, jmiClientes, jmiFornecedores, jmiProdutos;
-    private GridBagLayout sidebarWrapper = new GridBagLayout();
-    private JPanel componentes = new JPanel(); 
-
+    
     public TelaSistema(String titulo) {
         super(titulo);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -41,83 +56,61 @@ public class TelaSistema extends JFrame implements ActionListener {
 
         getContentPane().setLayout(new BorderLayout());
         
-        sidebar.setLayout(new GridLayout(16, 0));
-        conteudo.setLayout(new GridLayout(1, 2));
-
+        sidebar.setLayout(new GridLayout(12, 0));
         sidebar.setPreferredSize(new Dimension(250, 500));
-
-        JPanel conteudoWrapper = new JPanel();
-        conteudoWrapper.setBackground(Color.decode("#BEBEBE"));
-
-        conteudo.add(conteudoWrapper);        
-        
         montaSidebar();
-
+        
+        conteudo.setLayout(new BorderLayout());
+        montaConteudo();
+        
         getContentPane().add(sidebar, "West");
         getContentPane().add(conteudo, BorderLayout.CENTER);
         
         setVisible(true);
     }
 
-    private void montaMenu() {
-        jmb = new JMenuBar();
-        setJMenuBar(jmb);
+    /**
+     * 
+     */
+    private void montaConteudo() {
+        conteudo.setBackground(Color.decode("#BEBEBE"));
 
-        jmCadastros = new JMenu("Cadastros");
-        jmMovimentos = new JMenu("Movimentos");
-        jmRelatorios = new JMenu("Relatórios");
+        montaCabecalho();
+        conteudo.add(jpCabecalho, "North");
         
-        jmb.add(jmCadastros);
-        jmb.add(jmMovimentos);
-        jmb.add(jmRelatorios);
-
-        montaItensMenu();
-        adicionaListeners();
+        montaCorpo();
+        conteudo.add(jpCorpo, "Center");
     }
 
-    private void montaItensMenu() {
-        jmiEstados = new JMenuItem("Estados");
-        jmiCidades = new JMenuItem("Cidades");
-        jmiClientes = new JMenuItem("Clientes");
-        jmiFornecedores = new JMenuItem("Fornecedores");
-        jmiProdutos = new JMenuItem("Produtos");
-
-        jmCadastros.add(jmiEstados);
-        jmCadastros.add(jmiCidades);
-        jmCadastros.add(jmiClientes);
-        jmCadastros.add(jmiFornecedores);
-        jmCadastros.add(jmiProdutos);
+    
+    private void montaCabecalho() {
+        jpCabecalho.setBackground(Color.decode("#21252B"));
+        jpCabecalho.setPreferredSize(new Dimension(800, 60));
+        
+        JLabel texto = new JLabel("Teste");
+        texto.setForeground(Color.white);
+        jpCabecalho.add(texto);
     }
     
-    private void adicionaListeners() {
-        jmiEstados.addActionListener(this);
-        jmiCidades.addActionListener(this);
-        jmiClientes.addActionListener(this);
-        jmiFornecedores.addActionListener(this);
-        jmiProdutos.addActionListener(this);
+
+    private void montaCorpo() {
+        jpCorpo.setBackground(Color.decode("#4F79CA"));
+        jpCorpo.setPreferredSize(new Dimension(800, 60));
+        
+        JLabel texto = new JLabel("Teste");
+        texto.setForeground(Color.white);
+        jpCorpo.add(texto);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == jmiEstados) {
-            TelaCadastroEstado telaCadastroEstados = new TelaCadastroEstado();
-        } else if (ae.getSource() == jmiCidades) {
-            TelaCadastroCidade telaCadastroCidades = new TelaCadastroCidade();
-        }else if (ae.getSource() == jmiClientes) {
-            TelaCadastroCliente telaCadastroClientes = new TelaCadastroCliente();
-        } else if (ae.getSource() == jmiFornecedores) {
-            TelaCadastroFornecedor telaCadastroFornecedores = new TelaCadastroFornecedor();
-        } else if (ae.getSource() == jmiProdutos) {
-            TelaCadastroProduto telaCadastroProdutos = new TelaCadastroProduto();
-        }
-    }
-    
+    /**
+     * Adiciona o logo e os botões da barra lateral
+     */
     public void montaSidebar(){
-        JLabel status = new JLabel();
+        JLabel logotipo = new JLabel();
         ImageIcon imagem = new ImageIcon("assets/img/logo.png");
-        status.setIcon(imagem);
+        logotipo.setIcon(imagem);
 
-        sidebar.add(status);
+        sidebar.add(logotipo);
         sidebar.add(jbVendas);
         sidebar.add(jbFornecedores);
         sidebar.add(jbProdutos); 
