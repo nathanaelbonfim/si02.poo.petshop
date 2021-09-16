@@ -12,8 +12,7 @@ import componentes.MeuJTextField;
 public class TelaCadastroCidade extends TelaCadastro {
     private MeuJTextField mjtfNome   = new MeuJTextField(20, "Nome", true);
     private MeuJTextField mjtfCodigo = new MeuJTextField(10, "Código", true);
-    private MeuCampoCEP mcCEP = new MeuCampoCEP("CEP", true);
-    private MeuCampoData mcData = new MeuCampoData("Data Cadastro", true);
+
 
     private String[] dados = {"PR", "SP"};
     private MeuJComboBox mjcbEstado  = new MeuJComboBox(dados, "Estado", true);
@@ -28,8 +27,7 @@ public class TelaCadastroCidade extends TelaCadastro {
         adicionaComponente(3, 1, 1, 2, mjtfNome);
         adicionaComponente(1, 1, 1, 1, mjtfCodigo);
         adicionaComponente(5, 1, 1, 1, mjcbEstado);
-        adicionaComponente(7, 1, 1, 1, mcCEP);
-        adicionaComponente(9, 1, 1, 1, mcData);
+
 
         habilitaComponentes(false);
     }
