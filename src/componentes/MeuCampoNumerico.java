@@ -5,7 +5,7 @@ import java.text.ParsePosition;
 
 public class MeuCampoNumerico extends MeuJTextField {
     public MeuCampoNumerico(Integer tamanho, String dica, Boolean obrigatorio) {
-        super(5, dica, obrigatorio);
+        super(10, dica, obrigatorio);
     }
 
     public Boolean eValido() {
