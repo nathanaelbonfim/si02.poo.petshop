@@ -69,43 +69,43 @@ public class TelaSistema extends JFrame implements ActionListener {
         jmiExcluirProduto = new JMenuItem("Excluir");
         jmiListarProduto = new JMenuItem("Listar");
 
+        jmCompras.add(jmiListarCompra);
         jmCompras.add(jmiCadastrarCompra);
         jmCompras.add(jmiEditarCompra);
         jmCompras.add(jmiApagarCompra);
         jmCompras.add(jmiExcluirCompra);
-        jmCompras.add(jmiListarCompra);
 
+        jmFornecedores.add(jmiListarFornecedor);
         jmFornecedores.add(jmiCadastrarFornecedor);
         jmFornecedores.add(jmiEditarFornecedor);
         jmFornecedores.add(jmiApagarFornecedor);
         jmFornecedores.add(jmiExcluirFornecedor);
-        jmFornecedores.add(jmiListarFornecedor);
 
+        jmProdutos.add(jmiListarProduto);
         jmProdutos.add(jmiCadastrarProduto);
         jmProdutos.add(jmiEditarProduto);
         jmProdutos.add(jmiApagarProduto);
         jmProdutos.add(jmiExcluirProduto);
-        jmProdutos.add(jmiListarProduto);
     }
     
     private void adicionaListeners() {
+        jmiListarCompra.addActionListener(this);
         jmiCadastrarCompra.addActionListener(this);
         jmiEditarCompra.addActionListener(this);
         jmiApagarCompra.addActionListener(this);
         jmiExcluirCompra.addActionListener(this);
-        jmiListarCompra.addActionListener(this);
 
+        jmiListarFornecedor.addActionListener(this);
         jmiCadastrarFornecedor.addActionListener(this);
         jmiEditarFornecedor.addActionListener(this);
         jmiApagarFornecedor.addActionListener(this);
         jmiExcluirFornecedor.addActionListener(this);
-        jmiListarFornecedor.addActionListener(this);
 
+        jmiListarProduto.addActionListener(this);
         jmiCadastrarProduto.addActionListener(this);
         jmiEditarProduto.addActionListener(this);
         jmiApagarProduto.addActionListener(this);
         jmiExcluirProduto.addActionListener(this);
-        jmiListarProduto.addActionListener(this);
     }
 
     @Override
