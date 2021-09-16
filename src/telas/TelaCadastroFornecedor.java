@@ -14,7 +14,7 @@ public class TelaCadastroFornecedor extends TelaCadastro {
     private MeuCampoCEP mcCEP = new MeuCampoCEP("CEP", true);
     private MeuCampoData mcData = new MeuCampoData("Data Cadastro", true);
 
-    private String[] dados = {"PR", "SP","SC"};
+    private String[] dados = {"AC", "AL", "AP", "AM", "BA", "CE", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RO", "RR", "SC", "SP", "SE", "TO", "DF", "RN", "RS"};
     private MeuJComboBox mjcbEstado  = new MeuJComboBox(dados, "Estado", true);
 
     public TelaCadastroFornecedor() {
