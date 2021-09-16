@@ -10,10 +10,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import componentes.MeuComponente;
+import componentes.MinhaTabelaListagem;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -32,6 +34,7 @@ public abstract class TelaListagem extends JInternalFrame implements ActionListe
 
     protected JPanel jpComponentes = new JPanel();
     private JPanel jpBotoes = new JPanel();
+    private JPanel jpTabela = new JPanel();
 
     protected List<MeuComponente> componentes = new ArrayList();
 
@@ -43,6 +46,10 @@ public abstract class TelaListagem extends JInternalFrame implements ActionListe
         getContentPane().setLayout(new BorderLayout(2, 1));
         getContentPane().add(jpComponentes, "West");
 
+        jpTabela.setBackground(Color.red);
+        getContentPane().add(new MinhaTabelaListagem().criaTabela(), "Center");
+
+        
         getContentPane().add(jpBotoes, "South");
         
         adicionaBotao(jbCadastrar);
@@ -71,6 +78,12 @@ public abstract class TelaListagem extends JInternalFrame implements ActionListe
         } else if (ae.getSource() == jbExcluir) {
             excluir();
         }
+    }
+
+    public void montaTabela() {
+        JPanel tabela = new MinhaTabelaListagem().criaTabela();
+
+
     }
 
     private void habilitaBotoes() {
