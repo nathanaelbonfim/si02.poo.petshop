@@ -24,12 +24,9 @@ public abstract class TelaListagem extends JInternalFrame implements ActionListe
     private final int SELECIONADO = 1;
 
     // Botões que aparecem em todas as telas
-    private JButton jbIncluir = new JButton("Incluir");
-    private JButton jbAlterar = new JButton("Alterar");
-    private JButton jbExcluir = new JButton("Excluir");
-    private JButton jbConsultar = new JButton("Consultar");
-    private JButton jbConfirmar = new JButton("Confirmar");
-    private JButton jbCancelar = new JButton("Cancelar");
+    public JButton jbCadastrar = new JButton("Cadastrar");
+    public JButton jbAlterar = new JButton("Alterar");
+    public JButton jbExcluir = new JButton("Excluir");
 
     private int estadoTela = PADRAO;
 
@@ -48,12 +45,9 @@ public abstract class TelaListagem extends JInternalFrame implements ActionListe
 
         getContentPane().add(jpBotoes, "South");
         
-        adicionaBotao(jbIncluir);
+        adicionaBotao(jbCadastrar);
         adicionaBotao(jbAlterar);
         adicionaBotao(jbExcluir);
-        adicionaBotao(jbConsultar);
-        adicionaBotao(jbConfirmar);
-        adicionaBotao(jbCancelar);
 
         pack();
         setVisible(true);
@@ -70,36 +64,24 @@ public abstract class TelaListagem extends JInternalFrame implements ActionListe
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == jbIncluir) {
-            incluir();
+        if (ae.getSource() == jbCadastrar) {
+            cadastrar();
         } else if (ae.getSource() == jbAlterar) {
             alterar();
         } else if (ae.getSource() == jbExcluir) {
             excluir();
-        } else if (ae.getSource() == jbConsultar) {
-            consultar();
-        } else if (ae.getSource() == jbConfirmar) {
-            confirmar();
-        } else if (ae.getSource() == jbCancelar) {
-            cancelar();
         }
     }
 
     private void habilitaBotoes() {
         if (estadoTela == PADRAO) {
-            jbIncluir.setEnabled(true);
-            jbAlterar.setEnabled(false);
+            jbCadastrar.setEnabled(true);
+            jbAlterar.setEnabled(true);
             jbExcluir.setEnabled(false);
-            jbConsultar.setEnabled(true);
-            jbConfirmar.setEnabled(false);
-            jbCancelar.setEnabled(false);
         } else if (estadoTela == SELECIONADO) {
-            jbIncluir.setEnabled(true);
-            jbAlterar.setEnabled(false);
-            jbExcluir.setEnabled(false);
-            jbConsultar.setEnabled(false);
-            jbConfirmar.setEnabled(true);
-            jbCancelar.setEnabled(true);
+            jbCadastrar.setEnabled(false);
+            jbAlterar.setEnabled(true);
+            jbExcluir.setEnabled(true);
         }
     }
 
@@ -137,7 +119,7 @@ public abstract class TelaListagem extends JInternalFrame implements ActionListe
         componentes.add(component);
     }
 
-    public void incluir() {
+    public void cadastrar() {
         habilitaComponentes(true);
         habilitaBotoes();
     }
