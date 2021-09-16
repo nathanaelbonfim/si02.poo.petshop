@@ -13,9 +13,9 @@ public class TelaSistema extends JFrame implements ActionListener {
     public static JDesktopPane jdp = new JDesktopPane();
     private JMenuBar jmb;
 
-    private JMenu jmVendas, jmFornecedores, jmProdutos;
+    private JMenu jmCompras, jmFornecedores, jmProdutos;
 
-    private JMenuItem jmiCadastrarVenda, jmiEditarVenda,  jmiApagarVenda,  jmiExcluirVenda, jmiCadastrarFornecedor, jmiEditarFornecedor, jmiApagarFornecedor, jmiExcluirFornecedor, jmiCadastrarProduto, jmiEditarProduto, jmiApagarProduto, jmiExcluirProduto;
+    private JMenuItem jmiCadastrarCompra, jmiEditarCompra,  jmiApagarCompra,  jmiExcluirCompra, jmiCadastrarFornecedor, jmiEditarFornecedor, jmiApagarFornecedor, jmiExcluirFornecedor, jmiCadastrarProduto, jmiEditarProduto, jmiApagarProduto, jmiExcluirProduto;
 
     public TelaSistema(String titulo) {
         super(titulo);
@@ -38,11 +38,11 @@ public class TelaSistema extends JFrame implements ActionListener {
         jmb = new JMenuBar();
         setJMenuBar(jmb);
 
-        jmVendas = new JMenu("Vendas");
+        jmCompras = new JMenu("Compras");
         jmFornecedores = new JMenu("Fornecedores");
         jmProdutos = new JMenu("Produtos");
         
-        jmb.add(jmVendas);
+        jmb.add(jmCompras);
         jmb.add(jmFornecedores);
         jmb.add(jmProdutos);
 
@@ -51,10 +51,10 @@ public class TelaSistema extends JFrame implements ActionListener {
     }
 
     private void montaItensMenu() {
-        jmiCadastrarVenda = new JMenuItem("Cadastrar");
-        jmiEditarVenda = new JMenuItem("Editar");
-        jmiApagarVenda = new JMenuItem("Apagar");
-        jmiExcluirVenda = new JMenuItem("Excluir");
+        jmiCadastrarCompra = new JMenuItem("Cadastrar");
+        jmiEditarCompra = new JMenuItem("Editar");
+        jmiApagarCompra = new JMenuItem("Apagar");
+        jmiExcluirCompra = new JMenuItem("Excluir");
 
         jmiCadastrarFornecedor = new JMenuItem("Cadastrar");
         jmiEditarFornecedor = new JMenuItem("Editar");
@@ -66,10 +66,10 @@ public class TelaSistema extends JFrame implements ActionListener {
         jmiApagarProduto = new JMenuItem("Apagar");
         jmiExcluirProduto = new JMenuItem("Excluir");
 
-        jmVendas.add(jmiCadastrarVenda);
-        jmVendas.add(jmiEditarVenda);
-        jmVendas.add(jmiApagarVenda);
-        jmVendas.add(jmiExcluirVenda);
+        jmCompras.add(jmiCadastrarCompra);
+        jmCompras.add(jmiEditarCompra);
+        jmCompras.add(jmiApagarCompra);
+        jmCompras.add(jmiExcluirCompra);
 
         jmFornecedores.add(jmiCadastrarFornecedor);
         jmFornecedores.add(jmiEditarFornecedor);
@@ -83,10 +83,10 @@ public class TelaSistema extends JFrame implements ActionListener {
     }
     
     private void adicionaListeners() {
-        jmiCadastrarVenda.addActionListener(this);
-        jmiEditarVenda.addActionListener(this);
-        jmiApagarVenda.addActionListener(this);
-        jmiExcluirVenda.addActionListener(this);
+        jmiCadastrarCompra.addActionListener(this);
+        jmiEditarCompra.addActionListener(this);
+        jmiApagarCompra.addActionListener(this);
+        jmiExcluirCompra.addActionListener(this);
 
         jmiCadastrarFornecedor.addActionListener(this);
         jmiEditarFornecedor.addActionListener(this);
@@ -101,18 +101,47 @@ public class TelaSistema extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == jmiCadastrar) {
-            TelaCadastroEstado telaCadastroEstados = new TelaCadastroEstado();
+        if (ae.getSource() == jmiCadastrarCompra) {
+            TelaCadastroFornecedor telaCadastroFornecedor = new TelaCadastroFornecedor();
             // jdp.add(telaCadastroEstados);
-        } else if (ae.getSource() == jmiEditar) {
-            TelaCadastroCidade telaCadastroCidades = new TelaCadastroCidade();
+        } else if (ae.getSource() == jmiEditarCompra) {
+            TelaCadastroFornecedor telaCadastroFornecedor = new TelaCadastroFornecedor();
             // jdp.add(telaCadastroCidades);
-        }else if (ae.getSource() == jmiApagar) {
-            TelaCadastroCliente telaCadastroClientes = new TelaCadastroCliente();
+        }else if (ae.getSource() == jmiApagarCompra) {
+            TelaCadastroFornecedor telaCadastroFornecedor = new TelaCadastroFornecedor();
             // jdp.add(telaCadastroClientes);
-        } else if (ae.getSource() == jmiExcluir) {
-            TelaCadastroFornecedor telaCadastroFornecedores = new TelaCadastroFornecedor();
+        } else if (ae.getSource() == jmiExcluirCompra) {
+            TelaCadastroFornecedor telaCadastroFornecedor = new TelaCadastroFornecedor();
             // jdp.add(telaCadastroFornecedores);
         }
+    
+        if (ae.getSource() == jmiCadastrarFornecedor) {
+            TelaCadastroFornecedor telaCadastroFornecedor = new TelaCadastroFornecedor();
+            // jdp.add(telaCadastroEstados);
+        } else if (ae.getSource() == jmiEditarFornecedor) {
+            TelaCadastroFornecedor telaCadastroFornecedor = new TelaCadastroFornecedor();
+            // jdp.add(telaCadastroCidades);
+        }else if (ae.getSource() == jmiApagarFornecedor) {
+            TelaCadastroFornecedor telaCadastroFornecedor = new TelaCadastroFornecedor();
+            // jdp.add(telaCadastroClientes);
+        } else if (ae.getSource() == jmiExcluirFornecedor) {
+            TelaCadastroFornecedor telaCadastroFornecedor = new TelaCadastroFornecedor();
+            // jdp.add(telaCadastroFornecedores);
+        }
+    
+        if (ae.getSource() == jmiCadastrarProduto) {
+            TelaCadastroFornecedor telaCadastroFornecedor = new TelaCadastroFornecedor();
+            // jdp.add(telaCadastroEstados);
+        } else if (ae.getSource() == jmiEditarProduto) {
+            TelaCadastroFornecedor telaCadastroFornecedor = new TelaCadastroFornecedor();
+            // jdp.add(telaCadastroCidades);
+        }else if (ae.getSource() == jmiApagarProduto) {
+            TelaCadastroFornecedor telaCadastroFornecedor = new TelaCadastroFornecedor();
+            // jdp.add(telaCadastroClientes);
+        } else if (ae.getSource() == jmiExcluirProduto) {
+            TelaCadastroFornecedor telaCadastroFornecedor = new TelaCadastroFornecedor();
+            // jdp.add(telaCadastroFornecedores);
+        }
+    
     }
 }
