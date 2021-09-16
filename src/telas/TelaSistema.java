@@ -13,9 +13,9 @@ public class TelaSistema extends JFrame implements ActionListener {
     public static JDesktopPane jdp = new JDesktopPane();
     private JMenuBar jmb;
 
-    private JMenu jmCadastros, jmMovimentos, jmRelatorios;
+    private JMenu jmVendas, jmFornecedores, jmProdutos;
 
-    private JMenuItem jmiEstados, jmiCidades, jmiClientes, jmiFornecedores, jmiProdutos;
+    private JMenuItem jmiCadastrarVenda, jmiEditarVenda,  jmiApagarVenda,  jmiExcluirVenda, jmiCadastrarFornecedor, jmiEditarFornecedor, jmiApagarFornecedor, jmiExcluirFornecedor, jmiCadastrarProduto, jmiEditarProduto, jmiApagarProduto, jmiExcluirProduto;
 
     public TelaSistema(String titulo) {
         super(titulo);
@@ -26,61 +26,93 @@ public class TelaSistema extends JFrame implements ActionListener {
         setVisible(true);
     }
 
+    public JMenuItem getjmiExcluirFornecedor() {
+        return jmiExcluirFornecedor;
+    }
+
+    public void setjmiExcluirFornecedor(JMenuItem jmiExcluirFornecedor) {
+        this.jmiExcluirFornecedor = jmiExcluirFornecedor;
+    }
+
     private void montaMenu() {
         jmb = new JMenuBar();
         setJMenuBar(jmb);
 
-        jmCadastros = new JMenu("Cadastros");
-        jmMovimentos = new JMenu("Movimentos");
-        jmRelatorios = new JMenu("Relatórios");
+        jmVendas = new JMenu("Vendas");
+        jmFornecedores = new JMenu("Fornecedores");
+        jmProdutos = new JMenu("Produtos");
         
-        jmb.add(jmCadastros);
-        jmb.add(jmMovimentos);
-        jmb.add(jmRelatorios);
+        jmb.add(jmVendas);
+        jmb.add(jmFornecedores);
+        jmb.add(jmProdutos);
 
         montaItensMenu();
         adicionaListeners();
     }
 
     private void montaItensMenu() {
-        jmiEstados = new JMenuItem("Estados");
-        jmiCidades = new JMenuItem("Cidades");
-        jmiClientes = new JMenuItem("Clientes");
-        jmiFornecedores = new JMenuItem("Fornecedores");
-        jmiProdutos = new JMenuItem("Produtos");
+        jmiCadastrarVenda = new JMenuItem("Cadastrar");
+        jmiEditarVenda = new JMenuItem("Editar");
+        jmiApagarVenda = new JMenuItem("Apagar");
+        jmiExcluirVenda = new JMenuItem("Excluir");
 
-        jmCadastros.add(jmiEstados);
-        jmCadastros.add(jmiCidades);
-        jmCadastros.add(jmiClientes);
-        jmCadastros.add(jmiFornecedores);
-        jmCadastros.add(jmiProdutos);
+        jmiCadastrarFornecedor = new JMenuItem("Cadastrar");
+        jmiEditarFornecedor = new JMenuItem("Editar");
+        jmiApagarFornecedor = new JMenuItem("Apagar");
+        jmiExcluirFornecedor = (new JMenuItem("Excluir"));
+
+        jmiCadastrarProduto = new JMenuItem("Cadastrar");
+        jmiEditarProduto = new JMenuItem("Editar");
+        jmiApagarProduto = new JMenuItem("Apagar");
+        jmiExcluirProduto = new JMenuItem("Excluir");
+
+        jmVendas.add(jmiCadastrarVenda);
+        jmVendas.add(jmiEditarVenda);
+        jmVendas.add(jmiApagarVenda);
+        jmVendas.add(jmiExcluirVenda);
+
+        jmFornecedores.add(jmiCadastrarFornecedor);
+        jmFornecedores.add(jmiEditarFornecedor);
+        jmFornecedores.add(jmiApagarFornecedor);
+        jmFornecedores.add(jmiExcluirFornecedor);
+
+        jmProdutos.add(jmiCadastrarProduto);
+        jmProdutos.add(jmiEditarProduto);
+        jmProdutos.add(jmiApagarProduto);
+        jmProdutos.add(jmiExcluirProduto);
     }
     
     private void adicionaListeners() {
-        jmiEstados.addActionListener(this);
-        jmiCidades.addActionListener(this);
-        jmiClientes.addActionListener(this);
-        jmiFornecedores.addActionListener(this);
-        jmiProdutos.addActionListener(this);
+        jmiCadastrarVenda.addActionListener(this);
+        jmiEditarVenda.addActionListener(this);
+        jmiApagarVenda.addActionListener(this);
+        jmiExcluirVenda.addActionListener(this);
+
+        jmiCadastrarFornecedor.addActionListener(this);
+        jmiEditarFornecedor.addActionListener(this);
+        jmiApagarFornecedor.addActionListener(this);
+        jmiExcluirFornecedor.addActionListener(this);
+
+        jmiCadastrarProduto.addActionListener(this);
+        jmiEditarProduto.addActionListener(this);
+        jmiApagarProduto.addActionListener(this);
+        jmiExcluirProduto.addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == jmiEstados) {
+        if (ae.getSource() == jmiCadastrar) {
             TelaCadastroEstado telaCadastroEstados = new TelaCadastroEstado();
             // jdp.add(telaCadastroEstados);
-        } else if (ae.getSource() == jmiCidades) {
+        } else if (ae.getSource() == jmiEditar) {
             TelaCadastroCidade telaCadastroCidades = new TelaCadastroCidade();
             // jdp.add(telaCadastroCidades);
-        }else if (ae.getSource() == jmiClientes) {
+        }else if (ae.getSource() == jmiApagar) {
             TelaCadastroCliente telaCadastroClientes = new TelaCadastroCliente();
             // jdp.add(telaCadastroClientes);
-        } else if (ae.getSource() == jmiFornecedores) {
+        } else if (ae.getSource() == jmiExcluir) {
             TelaCadastroFornecedor telaCadastroFornecedores = new TelaCadastroFornecedor();
             // jdp.add(telaCadastroFornecedores);
-        } else if (ae.getSource() == jmiProdutos) {
-            TelaCadastroProduto telaCadastroProdutos = new TelaCadastroProduto();
-            // jdp.add(telaCadastroProdutos);
         }
     }
 }
