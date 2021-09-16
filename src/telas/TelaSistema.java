@@ -9,6 +9,10 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
+import telas.TelaListagemProduto;
+import telas.TelaListagemCompra;
+import telas.TelaListagemFornecedor;
+
 public class TelaSistema extends JFrame implements ActionListener {
     public static JDesktopPane jdp = new JDesktopPane();
     private JMenuBar jmb;
@@ -76,29 +80,25 @@ public class TelaSistema extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
+        // Compra
         if (ae.getSource() == jmiCadastrarCompra) {
             TelaCadastroFornecedor telaCadastroFornecedor = new TelaCadastroFornecedor();
-            // jdp.add(telaCadastroEstados);
         }else if (ae.getSource() == jmiListarCompra) {
-            TelaCadastroFornecedor telaCadastroFornecedor = new TelaCadastroFornecedor();
-            // jdp.add(telaCadastroFornecedores);
+            TelaListagemCompra telaCadastroFornecedor = new TelaListagemCompra();
         }
     
+        // Fornecedor
         if (ae.getSource() == jmiCadastrarFornecedor) {
             TelaCadastroFornecedor telaCadastroFornecedor = new TelaCadastroFornecedor();
-            // jdp.add(telaCadastroEstados);
         }else if (ae.getSource() == jmiListarFornecedor) {
-            TelaCadastroFornecedor telaCadastroFornecedor = new TelaCadastroFornecedor();
-            // jdp.add(telaCadastroFornecedores);
+            TelaListagemFornecedor telaLisFornecedor = new TelaListagemFornecedor();
         }
     
+        // Produto
         if (ae.getSource() == jmiCadastrarProduto) {
             TelaCadastroProduto telaCadastroProduto = new TelaCadastroProduto();
-            // jdp.add(telaCadastroEstados);
         }else if (ae.getSource() == jmiListarProduto) {
-            TelaCadastroProduto telaCadastroProduto = new TelaCadastroProduto();
-            // jdp.add(telaCadastroFornecedores);
+            TelaListagemProduto telaListagemProduto = new TelaListagemProduto();
         }
-    
     }
 }
