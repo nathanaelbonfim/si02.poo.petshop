@@ -89,23 +89,23 @@ public class TelaSistema extends JFrame implements ActionListener {
     }
     
     private void adicionaListeners() {
+        jmiListarCompra.addActionListener(this);
         jmiCadastrarCompra.addActionListener(this);
         jmiEditarCompra.addActionListener(this);
         jmiApagarCompra.addActionListener(this);
         jmiExcluirCompra.addActionListener(this);
-        jmiListarCompra.addActionListener(this);
 
+        jmiListarFornecedor.addActionListener(this);
         jmiCadastrarFornecedor.addActionListener(this);
         jmiEditarFornecedor.addActionListener(this);
         jmiApagarFornecedor.addActionListener(this);
         jmiExcluirFornecedor.addActionListener(this);
-        jmiListarFornecedor.addActionListener(this);
 
+        jmiListarProduto.addActionListener(this);
         jmiCadastrarProduto.addActionListener(this);
         jmiEditarProduto.addActionListener(this);
         jmiApagarProduto.addActionListener(this);
         jmiExcluirProduto.addActionListener(this);
-        jmiListarProduto.addActionListener(this);
     }
 
     @Override
