@@ -26,8 +26,6 @@ public abstract class TelaCadastro extends JInternalFrame implements ActionListe
     private final int CONSULTANDO = 3;
     private final int EXCLUINDO = 4;
 
-    // 
-
     // Botões que aparecem em todas as telas
     private JButton jbIncluir = new JButton("Incluir");
     private JButton jbAlterar = new JButton("Alterar");
