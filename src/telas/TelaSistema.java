@@ -1,165 +1,86 @@
 package telas;
 
-import java.awt.Color;
-import java.awt.GridLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.text.JTextComponent;
-
-import componentes.MeuTitulo;
-
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JMenuBar;
-import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
-
-public class TelaSistema extends JFrame {
+public class TelaSistema extends JFrame implements ActionListener {
     public static JDesktopPane jdp = new JDesktopPane();
     private JMenuBar jmb;
 
-    /**
-     * Barra lateral
-     */
-    private JPanel sidebar = new JPanel();
-    /**
-     * Conteúdo da tela
-     */
-    private static JPanel conteudo = new JPanel();
+    private JMenu jmCadastros, jmMovimentos, jmRelatorios;
 
-    /**
-     * Container para os botões da barra superior
-     */
-    private static JPanel jpCabecalho = new JPanel();
+    private JMenuItem jmiEstados, jmiCidades, jmiClientes, jmiFornecedores, jmiProdutos;
 
-    /**
-     * Container para o corpo da tela 
-     */
-    private JPanel jpCorpo = new JPanel();
-
-    private JPanel jpBotoesCabecalho = new JPanel();
-
-    private MeuTitulo tituloTela = new MeuTitulo("Compras");
-
-
-    // Botões
-    private JButton jbVendas = new JButton("Vendas");
-    private JButton jbFornecedores = new JButton("Fornecedores");
-    private JButton jbProdutos = new JButton("Produtos");
-    
     public TelaSistema(String titulo) {
-        this(titulo, "Tela");
-    }
-
-    public TelaSistema(String titulo, String nome) {
         super(titulo);
-
-        tituloTela.setText(nome);
-        tituloTela.setForeground(Color.white);
-
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(800, 600);
-
-        getContentPane().setLayout(new BorderLayout());
-        
-        sidebar.setLayout(new GridLayout(12, 0));
-        sidebar.setPreferredSize(new Dimension(250, 500));
-        montaSidebar();
-        
-        conteudo.setLayout(new BorderLayout());
-        montaConteudo();
-        
-        getContentPane().add(sidebar, "West");
-        getContentPane().add(conteudo, BorderLayout.CENTER);
-        
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        montaMenu();
+        getContentPane().add(jdp);
         setVisible(true);
     }
 
-    /**
-     * 
-     */
-    private void montaConteudo() {
-        conteudo.setBackground(Color.decode("#BEBEBE"));
+    private void montaMenu() {
+        jmb = new JMenuBar();
+        setJMenuBar(jmb);
 
-        montaCabecalho();
-        conteudo.add(jpCabecalho, "North");
+        jmCadastros = new JMenu("Cadastros");
+        jmMovimentos = new JMenu("Movimentos");
+        jmRelatorios = new JMenu("Relatórios");
         
-        montaCorpo();
-        conteudo.add(jpCorpo, "Center");
+        jmb.add(jmCadastros);
+        jmb.add(jmMovimentos);
+        jmb.add(jmRelatorios);
+
+        montaItensMenu();
+        adicionaListeners();
     }
 
-    /**
-     * Monta o cabeçalho superior das telas do sistema
-     */
-    private void montaCabecalho() {
-        jpCabecalho.setBackground(Color.decode("#21252B"));
-        jpCabecalho.setPreferredSize(new Dimension(800, 60));
-        
-        jpCabecalho.setLayout(new GridBagLayout());
+    private void montaItensMenu() {
+        jmiEstados = new JMenuItem("Estados");
+        jmiCidades = new JMenuItem("Cidades");
+        jmiClientes = new JMenuItem("Clientes");
+        jmiFornecedores = new JMenuItem("Fornecedores");
+        jmiProdutos = new JMenuItem("Produtos");
 
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.weightx = 1;
-        gbc.anchor = GridBagConstraints.WEST;
-        gbc.fill = GridBagConstraints.NONE;
-        gbc.insets = new Insets(1, 20, 1, 20);
-        gbc.gridx = 8;
-        gbc.gridy = 0;
-        
-        tituloTela.setPreferredSize(new Dimension(200, 100));
-        
-        jpCabecalho.add(tituloTela, gbc);
-        
-        jpBotoesCabecalho.setLayout(new GridLayout(0, 4));
-        JButton jbCadastrar = new JButton("Cadastrar");
-        JButton jbEditar = new JButton("Editar");
-        JButton jbLimpar = new JButton("Limpar");
-        JButton jbApagar = new JButton("Apagar");
-        
-        jpBotoesCabecalho.add(jbCadastrar);
-        jpBotoesCabecalho.add(jbEditar);
-        jpBotoesCabecalho.add(jbLimpar);
-        jpBotoesCabecalho.add(jbApagar);
-        
-        gbc.anchor = GridBagConstraints.NORTHEAST;
-        jpCabecalho.add(jpBotoesCabecalho, gbc);
+        jmCadastros.add(jmiEstados);
+        jmCadastros.add(jmiCidades);
+        jmCadastros.add(jmiClientes);
+        jmCadastros.add(jmiFornecedores);
+        jmCadastros.add(jmiProdutos);
     }
     
-    /**
-     * Monta o corpo do layout
-     */
-    private void montaCorpo() {
-        jpCorpo.setBackground(Color.decode("#4F79CA"));
-        jpCorpo.setPreferredSize(new Dimension(800, 60));
-        
-        JLabel texto = new JLabel("Oi");
-        texto.setForeground(Color.white);
-   
-
-        // GridBagConstraints gbc = new GridBagConstraints();
-        // gbc.anchor = GridBagConstraints.CENTER;
-
-        jpCorpo.add(texto);
-        // jpCorpo.add(texto);
+    private void adicionaListeners() {
+        jmiEstados.addActionListener(this);
+        jmiCidades.addActionListener(this);
+        jmiClientes.addActionListener(this);
+        jmiFornecedores.addActionListener(this);
+        jmiProdutos.addActionListener(this);
     }
 
-    /**
-     * Adiciona o logo e os botões da barra lateral
-     */
-    public void montaSidebar(){
-        JLabel logotipo = new JLabel();
-        ImageIcon imagem = new ImageIcon("assets/img/logo.png");
-        logotipo.setIcon(imagem);
-
-        sidebar.add(logotipo);
-        sidebar.add(jbVendas);
-        sidebar.add(jbFornecedores);
-        sidebar.add(jbProdutos); 
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == jmiEstados) {
+            TelaCadastroEstado telaCadastroEstados = new TelaCadastroEstado();
+            // jdp.add(telaCadastroEstados);
+        } else if (ae.getSource() == jmiCidades) {
+            TelaCadastroCidade telaCadastroCidades = new TelaCadastroCidade();
+            // jdp.add(telaCadastroCidades);
+        }else if (ae.getSource() == jmiClientes) {
+            TelaCadastroCliente telaCadastroClientes = new TelaCadastroCliente();
+            // jdp.add(telaCadastroClientes);
+        } else if (ae.getSource() == jmiFornecedores) {
+            TelaCadastroFornecedor telaCadastroFornecedores = new TelaCadastroFornecedor();
+            // jdp.add(telaCadastroFornecedores);
+        } else if (ae.getSource() == jmiProdutos) {
+            TelaCadastroProduto telaCadastroProdutos = new TelaCadastroProduto();
+            // jdp.add(telaCadastroProdutos);
+        }
     }
 }
