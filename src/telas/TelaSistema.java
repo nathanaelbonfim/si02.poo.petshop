@@ -32,17 +32,19 @@ public class TelaSistema extends JFrame {
     /**
      * Conteúdo da tela
      */
-    private JPanel conteudo = new JPanel();
+    private static JPanel conteudo = new JPanel();
 
     /**
      * Container para os botões da barra superior
      */
-    private JPanel jpCabecalho = new JPanel();
+    private static JPanel jpCabecalho = new JPanel();
 
     /**
      * Container para o corpo da tela 
      */
     private JPanel jpCorpo = new JPanel();
+
+    private JPanel jpBotoesCabecalho = new JPanel();
 
     private MeuTitulo tituloTela = new MeuTitulo("Compras");
 
@@ -103,12 +105,30 @@ public class TelaSistema extends JFrame {
         jpCabecalho.setLayout(new GridBagLayout());
 
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.weightx = 10;
+        gbc.weightx = 1;
         gbc.anchor = GridBagConstraints.WEST;
         gbc.fill = GridBagConstraints.NONE;
         gbc.insets = new Insets(1, 20, 1, 20);
-
+        gbc.gridx = 8;
+        gbc.gridy = 0;
+        
+        tituloTela.setPreferredSize(new Dimension(200, 100));
+        
         jpCabecalho.add(tituloTela, gbc);
+        
+        jpBotoesCabecalho.setLayout(new GridLayout(0, 4));
+        JButton jbCadastrar = new JButton("Cadastrar");
+        JButton jbEditar = new JButton("Editar");
+        JButton jbLimpar = new JButton("Limpar");
+        JButton jbApagar = new JButton("Apagar");
+        
+        jpBotoesCabecalho.add(jbCadastrar);
+        jpBotoesCabecalho.add(jbEditar);
+        jpBotoesCabecalho.add(jbLimpar);
+        jpBotoesCabecalho.add(jbApagar);
+        
+        gbc.anchor = GridBagConstraints.NORTHEAST;
+        jpCabecalho.add(jpBotoesCabecalho, gbc);
     }
     
     /**
@@ -120,6 +140,7 @@ public class TelaSistema extends JFrame {
         
         JLabel texto = new JLabel("Oi");
         texto.setForeground(Color.white);
+   
 
         // GridBagConstraints gbc = new GridBagConstraints();
         // gbc.anchor = GridBagConstraints.CENTER;
