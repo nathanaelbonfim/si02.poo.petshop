@@ -46,7 +46,7 @@ public class MeuJTextField extends JTextField implements MeuComponente, FocusLis
 
     @Override
     public void focusLost(FocusEvent fe) {
-        if (eObrigatorio() && getText().equals("")) {
+        if (eObrigatorio() && getText().equals("") || (!eValido())) {
             setBackground(Color.red);
         } else {
             setBackground(Color.white);
@@ -55,6 +55,6 @@ public class MeuJTextField extends JTextField implements MeuComponente, FocusLis
 
     @Override
     public Boolean eValido() {
-        return false;
+        return true;
     }
 }
