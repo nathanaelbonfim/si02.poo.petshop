@@ -82,7 +82,7 @@ public class TelaSistema extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         // Compra
         if (ae.getSource() == jmiCadastrarCompra) {
-            TelaCadastroFornecedor telaCadastroFornecedor = new TelaCadastroFornecedor();
+            TelaCadastroCompra telaCadastroFornecedor = new TelaCadastroCompra();
         }else if (ae.getSource() == jmiListarCompra) {
             TelaListagemCompra telaCadastroFornecedor = new TelaListagemCompra();
         }
