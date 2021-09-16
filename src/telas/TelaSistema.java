@@ -1,6 +1,7 @@
 package telas;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -11,9 +12,8 @@ import java.awt.Dimension;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.text.JTextComponent;
-
 import componentes.MeuTitulo;
+import componentes.MinhaTabela;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -25,6 +25,7 @@ public class TelaSistema extends JFrame {
     public static JDesktopPane jdp = new JDesktopPane();
     private JMenuBar jmb;
 
+    public static JPanel jpContainerTabela = new JPanel();
     /**
      * Barra lateral
      */
@@ -32,7 +33,7 @@ public class TelaSistema extends JFrame {
     /**
      * Conteúdo da tela
      */
-    private static JPanel conteudo = new JPanel();
+    public static JPanel conteudo = new JPanel();
 
     /**
      * Container para os botões da barra superior
@@ -42,7 +43,7 @@ public class TelaSistema extends JFrame {
     /**
      * Container para o corpo da tela 
      */
-    private JPanel jpCorpo = new JPanel();
+    public static JPanel jpCorpo = new JPanel();
 
     private JPanel jpBotoesCabecalho = new JPanel();
 
@@ -137,16 +138,18 @@ public class TelaSistema extends JFrame {
     private void montaCorpo() {
         jpCorpo.setBackground(Color.decode("#4F79CA"));
         jpCorpo.setPreferredSize(new Dimension(800, 60));
+        jpCorpo.setLayout(new GridLayout(1,0));
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.weightx = 1;
+        gbc.anchor = GridBagConstraints.CENTER;
+        Component tabelaCompra = new MinhaTabela();
+        tabelaCompra = new MinhaTabela();
+
+        jpContainerTabela.setLayout(new GridBagLayout());
+        jpContainerTabela.add(tabelaCompra, gbc);      
+        jpCorpo.add(jpContainerTabela);
         
-        JLabel texto = new JLabel("Oi");
-        texto.setForeground(Color.white);
-   
-
-        // GridBagConstraints gbc = new GridBagConstraints();
-        // gbc.anchor = GridBagConstraints.CENTER;
-
-        jpCorpo.add(texto);
-        // jpCorpo.add(texto);
     }
 
     /**
