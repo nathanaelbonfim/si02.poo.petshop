@@ -6,7 +6,7 @@ import componentes.MeuJComboBox;
 
 public class TelaCadastroCompra extends TelaCadastro {
     private MeuCampoNumerico mjtfCodigo = new MeuCampoNumerico(10, "Codigo", true);
-    private String[] dados = {"Shampoo", "Sabonete", "AAAAAAAAAAAAAAAAAA  AAAAA aA"};
+    private String[] dados = {"Brinquedo bolhinha", "Casinha Cachorro", "Ração Gourmet 1kg"};
     private MeuJComboBox mjcbProduto  = new MeuJComboBox(dados, "Produto", true);
     private MeuCampoNumerico mcnValorUnitario = new MeuCampoNumerico(5, "Valor", true);
     private MeuCampoNumerico mcnDescontoUnitario = new MeuCampoNumerico(5, "Desconto unitario", false);
